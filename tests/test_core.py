@@ -70,6 +70,15 @@ class SensusContractTests(TestCase):
         self.assertEqual(claim.attributions, ())
         self.assertEqual(claim.evidence, Evidence.INTEROCEPTIVE)
 
+    def test_identical_features_in_same_tick_do_not_merge_distinct_hints(self):
+        scene = Sensus().step(1, [
+            percept("a", 1, hint="cup-one"),
+            percept("b", 1, hint="cup-two"),
+        ])
+        self.assertEqual(len(scene.objects), 2)
+        self.assertEqual(len({item.object_id for item in scene.objects}), 2)
+        self.assertEqual({item.identity_status for item in scene.objects}, {"new"})
+
     def test_attribution_kept_as_candidate(self):
         cause = Attribution("noise:next-room", 0.3)
         scene = Sensus().step(1, [percept(
