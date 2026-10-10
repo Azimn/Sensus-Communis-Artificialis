@@ -31,3 +31,7 @@ Documentation: docs/SPEC_v0.1.md and docs/EXPERIMENTS_v0.1.md.
 Design specification (2026-10-10): the hard invariant is **no evidential-class
 amplification** — integration may bind, never upgrade; conflicting binds are
 vetoed and surfaced, never silently resolved. See docs/SPEC_v0.1.md.
+
+## Independent research and integration freeze
+
+The standalone lab battery is documented in [docs/STANDALONE_BATTERY_v0.1.md](docs/STANDALONE_BATTERY_v0.1.md). Its known false merges are reported as negative cases. Run `python -m experiments.standalone_battery` for structured metrics; CI saves JSON artifacts. The [adoption gates](docs/ADOPTION_GATES.md) preserve the independent October 15 to 23 blinded ablation window; this repository does not adopt or modify external systems.

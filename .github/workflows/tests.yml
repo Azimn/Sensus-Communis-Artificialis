@@ -15,3 +15,11 @@ jobs:
           python-version: '3.11'
       - name: Run standard-library tests
         run: python -m unittest discover -s tests -v
+      - name: Produce standalone synthetic benchmark
+        run: python -m experiments.standalone_battery --output standalone_battery.json
+      - name: Preserve versioned benchmark artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: standalone-battery-${{ github.sha }}
+          path: standalone_battery.json
+          if-no-files-found: error
