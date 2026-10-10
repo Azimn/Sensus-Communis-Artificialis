@@ -6,7 +6,31 @@ Formal philosophical designation: Sensus Communis Artificialis.
 
 ## Scope and source fidelity
 
-This document operationalizes only the source excerpt supplied to the implementation session, covering upstream/downstream/lateral boundaries, state, interoception, five core operations, six experiments, nonclaims and intended integrations. The excerpt references an unavailable Section 3. Its exact evidential taxonomy and binding law remain UNVERIFIED. The implementation uses conservative, explicit provisional classes and never treats them as a recovery of that missing text.
+This document operationalizes the design specification supplied to the
+implementation session, covering names, definition, the hard invariant,
+upstream/downstream/lateral boundaries, state, interoception, five core
+operations, six experiments, nonclaims and intended integrations. The
+implementation's evidential classes below are a conservative provisional
+refinement of the specified taxonomy; the binding law itself is confirmed
+as specified and is enforced by the contract tests.
+
+## Hard invariant (§3 of the design specification): no evidential-class amplification
+
+**Integration may bind; it may never upgrade.** A heard sound must not become
+seen knowledge (hearing glass break in another room ≠ visual knowledge of a
+broken beaker). An inference must not become a perception. A memory must not
+become a present observation. Every scene element carries its evidential
+class, and binding preserves the weakest class of its constituents. If
+constituents conflict on class or content beyond tolerance, the organ must
+**refuse the bind** (binding veto) and surface the conflict — never silently
+resolve it in favor of coherence.
+
+In this implementation a veto is a refusal to produce a single authoritative
+fused value, not a refusal to record the conflicting evidence: vetoed and
+uncertain conflicts are both surfaced explicitly as `Conflict` records with
+contested attributes, and neither discards competing claims. This is the
+organ's analogue of synthetic-ipseity's "unearned introspection" ban, and it
+is the wall everything else hangs on.
 
 ## Authority and contracts
 
@@ -18,7 +42,7 @@ Lateral: Daemonium may supply already regulated weights as confidence-bearing pe
 
 ## Current provisional evidence classes
 
-observed: a direct channel claim; reported: another source's claim; inferred: a proposition derived from other evidence; remembered: a retrieved memory claim; interoceptive: a body-signal claim. These categories are deliberately not interchangeable and remain attached to their original Percept. This set is only provisional until the original Section 3 is inspected.
+observed: a direct channel claim; reported: another source's claim; inferred: a proposition derived from other evidence; remembered: a retrieved memory claim; interoceptive: a body-signal claim. These categories are deliberately not interchangeable and remain attached to their original Percept. The set refines the specified PERCEIVED / REMEMBERED / INFERRED taxonomy for implementation; the no-amplification binding law above applies across all five classes.
 
 Each Percept carries event_id, channel, evidence class, source_ref, tick, attribute, value, confidence, optional per-tick object_hint, optional immutable feature signature, and optional interoceptive cause attributions. No metadata source is promoted to truth by binding. Hints only group inputs within one tick and are not persistent object identities. No cross-tick identity is established without feature evidence.
 
@@ -48,4 +72,4 @@ No claim about consciousness, sentience, subjective experience, a solution to th
 
 ## Known limitations
 
-The excerpt's Sections 1 to 3 are absent. The current implementation assumes a total ordering of integer ticks and text-valued attributes. It uses no trust inference, no time-alignment algorithm, no probabilistic calibration, no attention control, no language model, no world-authority writes and no persistence across restarts. Its semantic evidence categories and exact conflict tolerance must be ratified after review of the complete original specification.
+The excerpt's Sections 1 to 3 are absent. The current implementation assumes a total ordering of integer ticks and text-valued attributes. It uses no trust inference, no time-alignment algorithm, no probabilistic calibration, no attention control, no language model, no world-authority writes and no persistence across restarts. Its semantic evidence categories and exact conflict tolerance are provisional refinements of the specified taxonomy; the binding law is confirmed (see Hard invariant above).

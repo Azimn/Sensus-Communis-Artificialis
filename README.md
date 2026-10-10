@@ -28,4 +28,6 @@ Basic usage:
 
 Documentation: docs/SPEC_v0.1.md and docs/EXPERIMENTS_v0.1.md.
 
-Important limitation: the supplied prompt excerpt began at upstream/downstream boundaries and refers to a missing Section 3. This repository records conservative provisional invariants and does not claim to reconstruct the unseen sections.
+Design specification (2026-10-10): the hard invariant is **no evidential-class
+amplification** — integration may bind, never upgrade; conflicting binds are
+vetoed and surfaced, never silently resolved. See docs/SPEC_v0.1.md.
