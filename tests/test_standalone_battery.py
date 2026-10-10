@@ -12,9 +12,9 @@ class StandaloneBatteryTests(unittest.TestCase):
     def test_identity_reports_known_collision_failure(self):
         result = run_identity(20261010, 10)
         self.assertEqual(result["n"], 40)
-        self.assertEqual(result["correct"], 30)
+        self.assertEqual(result["correct"], 20)
         self.assertEqual(result["false_merges"], 10)
-        self.assertEqual(result["false_splits"], 0)
+        self.assertEqual(result["false_splits"], 0)\n        self.assertEqual(result["abstentions"], 10)
         self.assertEqual(result["always_same_control_accuracy"], 0.5)
         self.assertEqual(result["always_different_control_accuracy"], 0.5)
 
