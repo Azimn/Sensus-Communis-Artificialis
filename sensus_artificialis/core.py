@@ -188,6 +188,9 @@ class Sensus:
             group_key = "hint:" + item.object_hint if item.object_hint else "event:" + item.event_id
             groups.setdefault(group_key, []).append(item)
 
+        # Freeze the previous-tick comparison pool. Current-tick objects must
+        # never become re-identification targets for each other.
+        prior_files = tuple(self._files.values())
         objects: list[SceneObject] = []
         conflicts: list[Conflict] = []
         claimed_old_ids: set[str] = set()
@@ -198,7 +201,7 @@ class Sensus:
             candidates = tuple(
                 sorted(
                     (IdentityCandidate(old.object_id, round(_similarity(features, old.features), 6))
-                     for old in self._files.values() if features and old.features
+                     for old in prior_files if features and old.features
                      and old.object_id not in claimed_old_ids),
                     key=lambda c: (-c.similarity, c.object_id)
                 )
